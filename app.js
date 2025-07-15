@@ -4,7 +4,6 @@ import express from "express";
 import connectDB from "./db/connect.js"; // Make sure this exports default
 import tasks from "./routes/task.js";
 const app = express();
-
 const PORT = process.env.PORT || 5000;
 app.use(express.json());
 app.get("/", (req, res) => {
@@ -15,6 +14,9 @@ app.use("/api/tasks", tasks);
 const start = async () => {
   try {
     await connectDB(process.env.MONGODB_URL);
+    console.log("MONGODB_URL:", process.env.MONGODB_URL);
+   // await Task.create(tasksJSON);
+    //console.log("Tasks created successfully");
     app.listen(PORT, () => {
       console.log(`Server is running on ${PORT}`);
     });

@@ -10,8 +10,9 @@ const tasksJSON = JSON.parse(data);
 
 const start = async () => {
   try {
-    await connectDB(process.env.MONGODB_URL);
-    await Task.create(tasksJSON);
+      await connectDB(process.env.MONGODB_URL);
+      await Task.create(tasksJSON);
+     // await Task.deleteMany();
     console.log("Tasks created successfully");
     process.exit(0);
   } catch (error) {
